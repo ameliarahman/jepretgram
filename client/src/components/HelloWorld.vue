@@ -47,7 +47,6 @@
          <div class="panel-footer">
           {{post.caption}}
           <h6>Posted by:  {{post.username}}</h6>
-
           <div class="pull-right">
             <button type="button" class="btn btn-danger" @click="deletePost(post._id)">Delete</button>
             <button type="button" class="btn btn-info">Edit</button>
