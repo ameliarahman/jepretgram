@@ -1,14 +1,22 @@
 const Post = require('../models/modelPost')
-
+const User = require('../models/modelUser')
 
 const createPost = (req, res) => {
-  Post.create({
-    caption: req.body.caption,
-    image_url: req.file.filename,
-    likes: req.body.likes
+  User.findOne({
+    username: req.body.username
   })
-    .then((dataPost) => {
-      res.send(dataPost)
+    .then((dataUser) => {
+      let post = new Post({
+        caption: req.body.caption,
+        image_url: req.file.filename,
+        likes: req.body.likes
+      })
+      post.save(function (err) {
+        dataUser.posts.push(post)
+        dataUser.save(function () {
+          res.send(dataUser)
+        })
+      })
     })
     .catch((reason) => {
       res.send(reason)

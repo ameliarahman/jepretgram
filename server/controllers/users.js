@@ -58,6 +58,7 @@ const signIn = (req, res) => {
 
 const getDataUser = (req, res) => {
   User.find()
+  .populate('posts')
     .then((dataUsers) => {
       res.send(dataUsers)
     })

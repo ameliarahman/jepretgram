@@ -21,14 +21,26 @@ const mutations = {
 
 const actions = {
 
-  getAllDataPost ({commit}) {
-    http.get('/api/posts')
-    .then((dataPosts) => {
-      commit('setDataPost', dataPosts.data)
-    })
-    .catch((reason) => {
+  signup({ commit }, dataUser) {
+    http.post('/api/users/signup', {
+      name: dataUser.name,
+      username: dataUser.username,
+      password: dataUser.password
+    }).then((dataUser) => {
+      router.push('/signin')
+      alert("Successfully registered!")
+    }).catch((reason) => {
       console.log(reason)
     })
+  },
+  getAllDataPost({ commit }) {
+    http.get('/api/posts')
+      .then((dataPosts) => {
+        commit('setDataPost', dataPosts.data)
+      })
+      .catch((reason) => {
+        console.log(reason)
+      })
   }
 
 }
