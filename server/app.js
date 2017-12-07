@@ -11,6 +11,7 @@ var users = require('./routes/users');
 var posts = require('./routes/posts')
 var app = express();
 
+mongoose.Promise = global.Promise
 mongoose.connection.openUri('mongodb://localhost/jepretgram', (err) => {
   if (err) console.log('database not connected ', err)
   else console.log('database connected')

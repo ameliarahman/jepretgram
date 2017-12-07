@@ -14,10 +14,9 @@ Client :
 - npm run dev
 
 ## API
-Users
-1. http://localhost:3000/api/users/
-
 Post
-1. http://localhost:3000/api/posts/
+1. /api/posts/
+2. /api/posts/:id
+
 
 
