@@ -65,6 +65,7 @@ const deletePost = (req, res) => {
     })
 }
 
+
 module.exports = {
   createPost,
   findPost,
