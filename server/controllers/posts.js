@@ -9,7 +9,8 @@ const createPost = (req, res) => {
       let post = new Post({
         caption: req.body.caption,
         image_url: req.file.filename,
-        likes: req.body.likes
+        likes: req.body.likes,
+        username: req.body.username
       })
       post.save(function (err) {
         dataUser.posts.push(post)

@@ -4,6 +4,7 @@ const mongoose = require('mongoose'),
 const postSchema = new Schema({
   caption: String,
   image_url: String,
+  username: String,
   likes: [{
     type: Schema.Types.ObjectId,
     ref: 'users'

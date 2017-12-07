@@ -3,7 +3,10 @@ const mongoose = require('mongoose'),
 
 const userSchema = new Schema({
   name: String,
-  username: String,
+  username: {
+    type: String,
+    unique: true
+  },
   password: String,
   posts: [{
     type: Schema.Types.ObjectId,

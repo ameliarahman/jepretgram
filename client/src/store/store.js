@@ -20,18 +20,31 @@ const mutations = {
 }
 
 const actions = {
-
+  signin({ commit }, dataUser) {
+    http.post('/api/users/signin', {
+      username: dataUser.username,
+      password: dataUser.password
+    })
+      .then((dataUser) => {
+        localStorage.setItem('token', dataUser.data.token)
+        alert("Successfully login")
+      })
+      .catch((reason) => {
+        console.log(reason)
+      })
+    router.push('/')
+  },
   signup({ commit }, dataUser) {
     http.post('/api/users/signup', {
       name: dataUser.name,
       username: dataUser.username,
       password: dataUser.password
     }).then((dataUser) => {
-      router.push('/signin')
-      alert("Successfully registered!")
+      alert("Successfully registered! Please login first..")
     }).catch((reason) => {
       console.log(reason)
     })
+    router.push('/signin')
   },
   getAllDataPost({ commit }) {
     http.get('/api/posts')
